@@ -16,7 +16,7 @@ int main(){
     sf::Color pxcolor;
     sf::Vector2 pxpos(0, 0);
     while (pixelcount < PIXELSMAX){
-        int spawncorner = rand()%4;
+        int spawncorner = random()%4;
         if(pixelcount < PIXELSMAX/4){
             pxcolor = sf::Color::Red;
         }
@@ -59,7 +59,7 @@ int main(){
                 cout << "hit x: " << pxpos.x << " y: " << pxpos.y << endl << PIXELSMAX-pixelcount << " pixels to go (" << pixelcount/(float)(PIXELSMAX)*100 <<"%)" << endl;
                 break;
             }
-            int rnum = rand()%4;
+            int rnum = random()%4;
             if(rnum == 0 && pxpos.x != 0){
                 pxpos.x--;
                 continue;
