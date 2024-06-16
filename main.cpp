@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int WIDTH  = 1920, HEIGHT = 1080, PIXELSMAX = (WIDTH*HEIGHT)/4;
+const int WIDTH  = 100, HEIGHT = 100, PIXELSMAX = (WIDTH*HEIGHT)/4;
 
 sf::Image imgtex;
 
@@ -41,9 +41,6 @@ int main(){
             break;
         case 3:
             pxpos = sf::Vector2(WIDTH-1, HEIGHT-1);
-            break;
-        default:
-            pxpos = sf::Vector2(0, 0);
             break;
         }
 
