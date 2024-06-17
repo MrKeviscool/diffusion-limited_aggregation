@@ -5,31 +5,33 @@
 
 using namespace std;
 
-const bool cornersonly = false;
-
 sf::Image imgtex;
 
-int getnumber(string askfor);
+int getnumber(const char *askfor);
 
 int main(int argc, char *argv[]){
+
     int width, height, pixelsmax;
+    bool cornersonly = false;
     if(argc < 2){
         width = getnumber("width: ");
         height = getnumber("height: ");
-        pixelsmax = getnumber("max pixels: ");
+        pixelsmax = ((float)(width*height)/100) * getnumber("max pixels %: ");
+        if(getnumber("go to corners (0/1): ") == 1)
+            cornersonly = true;
     }
     else{
         if(argc < 4){
-            cout << "USAGE: dla [WIDTH] [HEIGHT] [MAX PIXELS]\n";
+            cout << "USAGE: dla [WIDTH] [HEIGHT] [MAX PIXELS %]\n";
             return 1;
         }
         try{
             width = stoi(argv[1]);
             height = stoi(argv[2]);
-            pixelsmax = stoi(argv[3]);
+            pixelsmax = ((float)(width*height)/100) * stoi(argv[3]);
         }
         catch(invalid_argument){
-            cout << "ERROR, INVALID ARGUMENTS\nUSAGE: dla [WIDTH] [HEIGHT] [MAX PIXELS]\n";
+            cout << "ERROR, INVALID ARGUMENTS\nUSAGE: dla [WIDTH] [HEIGHT] [MAX PIXELS %]\n";
             return 1;
         }
     }
@@ -122,7 +124,7 @@ int main(int argc, char *argv[]){
     imgtex.saveToFile("result.png");
 }
 
-int getnumber(string askfor){
+int getnumber(const char *askfor){
     string inp;
     while(true){
         cout << askfor;
