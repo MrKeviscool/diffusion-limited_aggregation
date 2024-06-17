@@ -34,11 +34,9 @@ int main(){
         if(!cornersonly){
             switch (spawncorner){
             case 0:
-                // pxpos = sf::Vector2(0, 0);
-                pxpos = sf::Vector2((int)(random()%WIDTH), 0); //WORK IN PROGRESS. KEEP DOING!!!!!!
+                pxpos = sf::Vector2((int)(random()%WIDTH), 0); 
                 break;
             case 1:
-                // pxpos = sf::Vector2(WIDTH-1, 0);
                 pxpos = sf::Vector2(WIDTH-1, (int)(random()%HEIGHT));
                 break;
             case 2:
