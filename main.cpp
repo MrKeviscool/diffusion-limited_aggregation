@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int WIDTH  = 100, HEIGHT = 100, PIXELSMAX = (WIDTH*HEIGHT)/4;
+const int WIDTH  = 300, HEIGHT = 300, PIXELSMAX = (WIDTH*HEIGHT)/10;
 
 sf::Image imgtex;
 
@@ -15,8 +15,8 @@ int main(){
     imgtex.setPixel(WIDTH/2, HEIGHT/2, sf::Color::White);
     sf::Color pxcolor;
     sf::Vector2 pxpos(0, 0);
+    
     while (pixelcount < PIXELSMAX){
-        int spawncorner = random()%4;
         if(pixelcount < PIXELSMAX/4){
             pxcolor = sf::Color::Red;
         }
@@ -29,6 +29,7 @@ int main(){
         else{
             pxcolor = sf::Color::Magenta;
         }
+        int spawncorner = random()%4;
         switch (spawncorner){
         case 0:
             pxpos = sf::Vector2(0, 0);
@@ -45,11 +46,11 @@ int main(){
         }
 
         while (true){
-            if(pxpos.x != 0 && imgtex.getPixel(pxpos.x-1, pxpos.y) != sf::Color::Black
-            || pxpos.x < WIDTH && imgtex.getPixel(pxpos.x+1, pxpos.y) != sf::Color::Black
+            if(pxpos.x > 0 && imgtex.getPixel(pxpos.x-1, pxpos.y) != sf::Color::Black
+            || pxpos.x < WIDTH-1 && imgtex.getPixel(pxpos.x+1, pxpos.y) != sf::Color::Black
 
-            ||pxpos.y !=  0 && imgtex.getPixel(pxpos.x, pxpos.y-1) != sf::Color::Black
-            ||pxpos.y < HEIGHT && imgtex.getPixel(pxpos.x, pxpos.y+1) != sf::Color::Black
+            ||pxpos.y > 0 && imgtex.getPixel(pxpos.x, pxpos.y-1) != sf::Color::Black
+            ||pxpos.y < HEIGHT-1 && imgtex.getPixel(pxpos.x, pxpos.y+1) != sf::Color::Black
             ){
                 imgtex.setPixel(pxpos.x, pxpos.y, pxcolor);
                 pixelcount++;
@@ -61,7 +62,7 @@ int main(){
                 pxpos.x--;
                 continue;
             }
-            if(rnum == 1 && pxpos.x < WIDTH){
+            if(rnum == 1 && pxpos.x < WIDTH-1){
                 pxpos.x++;
                 continue;
             }
@@ -69,7 +70,7 @@ int main(){
                 pxpos.y--;
                 continue;
             }
-            if(rnum == 3 && pxpos.y < HEIGHT){
+            if(rnum == 3 && pxpos.y < HEIGHT-1){
                 pxpos.y++;
             }
         }
