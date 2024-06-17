@@ -4,7 +4,8 @@
 
 using namespace std;
 
-const int WIDTH  = 300, HEIGHT = 300, PIXELSMAX = (WIDTH*HEIGHT)/5;
+const int WIDTH  = 300, HEIGHT = 300, PIXELSMAX = (WIDTH*HEIGHT)/10;
+const bool cornersonly = false;
 
 sf::Image imgtex;
 
@@ -30,23 +31,40 @@ int main(){
             pxcolor = sf::Color::Magenta;
         }
         int spawncorner = random()%4;
-        switch (spawncorner){
-        case 0:
-            // pxpos = sf::Vector2(0, 0);
-            pxpos = sf::Vector2((int)(random()%WIDTH), 0); //WORK IN PROGRESS. KEEP DOING!!!!!!
-            break;
-        case 1:
-            // pxpos = sf::Vector2(WIDTH-1, 0);
-            pxpos = sf::Vector2(WIDTH-1, (int)(random()%HEIGHT));
-            break;
-        case 2:
-            pxpos = sf::Vector2((int)(random()%WIDTH), HEIGHT-1);
-            break;
-        case 3:
-            pxpos = sf::Vector2(0, (int)(random()%HEIGHT));
-            break;
+        if(!cornersonly){
+            switch (spawncorner){
+            case 0:
+                // pxpos = sf::Vector2(0, 0);
+                pxpos = sf::Vector2((int)(random()%WIDTH), 0); //WORK IN PROGRESS. KEEP DOING!!!!!!
+                break;
+            case 1:
+                // pxpos = sf::Vector2(WIDTH-1, 0);
+                pxpos = sf::Vector2(WIDTH-1, (int)(random()%HEIGHT));
+                break;
+            case 2:
+                pxpos = sf::Vector2((int)(random()%WIDTH), HEIGHT-1);
+                break;
+            case 3:
+                pxpos = sf::Vector2(0, (int)(random()%HEIGHT));
+                break;
+            }
         }
-
+        else{
+            switch (spawncorner){
+            case 0:
+                pxpos = sf::Vector2(0, 0);
+                break;
+            case 1:
+                pxpos = sf::Vector2(WIDTH-1, 0);
+                break;
+            case 2:
+                pxpos = sf::Vector2(WIDTH-1, HEIGHT-1);
+                break;
+            case 3:
+                pxpos = sf::Vector2(0, HEIGHT-1);
+                break;
+            }  
+        }
         while (true){
             if(pxpos.x > 0 && imgtex.getPixel(pxpos.x-1, pxpos.y) != sf::Color::Black
             || pxpos.x < WIDTH-1 && imgtex.getPixel(pxpos.x+1, pxpos.y) != sf::Color::Black
