@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <SFML/Graphics.hpp>
 
 using namespace std;
@@ -10,6 +11,20 @@ const bool cornersonly = false;
 sf::Image imgtex;
 
 int main(){
+    string w, h, pxmax;
+    while (true){
+        cout << "w:";
+        try{
+            getline(cin, w);
+            atoi() //keep going
+        }
+        catch{
+            cout << "error, invalid input\n";
+            continue;
+        }
+        break;
+    }
+    
     int pixelcount = 0;
     imgtex.create(WIDTH, HEIGHT, sf::Color::Black);
     srand(clock());
