@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int WIDTH  = 300, HEIGHT = 300, PIXELSMAX = (WIDTH*HEIGHT)/10;
+const int WIDTH  = 300, HEIGHT = 300, PIXELSMAX = (WIDTH*HEIGHT)/5;
 
 sf::Image imgtex;
 
@@ -36,13 +36,14 @@ int main(){
             pxpos = sf::Vector2((int)(random()%WIDTH), 0); //WORK IN PROGRESS. KEEP DOING!!!!!!
             break;
         case 1:
-            pxpos = sf::Vector2(WIDTH-1, 0);
+            // pxpos = sf::Vector2(WIDTH-1, 0);
+            pxpos = sf::Vector2(WIDTH-1, (int)(random()%HEIGHT));
             break;
         case 2:
-            pxpos = sf::Vector2(0, HEIGHT-1);
+            pxpos = sf::Vector2((int)(random()%WIDTH), HEIGHT-1);
             break;
         case 3:
-            pxpos = sf::Vector2(WIDTH-1, HEIGHT-1);
+            pxpos = sf::Vector2(0, (int)(random()%HEIGHT));
             break;
         }
 
