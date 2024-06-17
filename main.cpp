@@ -32,7 +32,8 @@ int main(){
         int spawncorner = random()%4;
         switch (spawncorner){
         case 0:
-            pxpos = sf::Vector2(0, 0);
+            // pxpos = sf::Vector2(0, 0);
+            pxpos = sf::Vector2((int)(random()%WIDTH), 0); //WORK IN PROGRESS. KEEP DOING!!!!!!
             break;
         case 1:
             pxpos = sf::Vector2(WIDTH-1, 0);
