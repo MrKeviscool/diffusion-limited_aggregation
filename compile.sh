@@ -1,1 +1,1 @@
-g++ main.cpp -o program -lsfml-graphics -lsfml-window -lsfml-system
+g++ main.cpp -o dla -lsfml-graphics -lsfml-system
